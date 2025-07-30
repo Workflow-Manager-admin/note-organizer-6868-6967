@@ -1,104 +1,396 @@
-/* CSS Variables for Theme Management */
+/* Theme color variables for light mode */
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --primary: #1976d2;
+  --secondary: #424242;
+  --accent: #ffd600;
+  --danger: #e53935;
+  --bg: #ffffff;
+  --grey-light: #f8f9fa;
+  --grey: #e9ecef;
+  --border: #e9ecef;
+  --text: #282c34;
+  --text-secondary: #666c7b;
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
-}
-
-.App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+/* App Layout */
+.notes-app {
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   flex-direction: column;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.topbar {
+  width: 100%;
+  min-height: 56px;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
+  justify-content: space-between;
+  padding: 0 3vw;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px -12px var(--secondary);
+  letter-spacing: 0.04em;
+  z-index: 10;
   position: relative;
+  background: var(--primary);
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.app-title {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 2px 8px rgba(20,50,100,0.08);
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
+.search-container {
+  flex: 1;
+  text-align: right;
+}
+
+.search-input {
+  margin-left: 2vw;
   border: none;
   border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 0.6em 1em;
+  font-size: 1em;
+  background: var(--grey-light);
+  color: var(--text);
+  box-shadow: 0 1px 2px rgba(33,30,40,0.02);
+  width: 220px;
+  max-width: 50vw;
+  outline: none;
+  transition: box-shadow 0.25s, background 0.25s;
+}
+.search-input:focus {
+  background: #fff;
+  box-shadow: 0 0 0 2px var(--primary, #1976d2);
+}
+
+.main-body {
+  flex: 1;
+  display: flex;
+  min-height: 0; /* so children can overflow for scroll */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  background: var(--grey-light);
+  border-right: 1px solid var(--border);
+  padding: 0.5em 1.2em 0.5em 1em;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.sidebar-section h3 {
+  margin: 0 0 10px 0;
+  font-size: 1em;
   font-weight: 600;
+  color: var(--secondary);
+  letter-spacing: 0.03em;
+}
+.sidebar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
+}
+.sidebar-tag {
+  font-size: 0.97em;
+  background: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  border-radius: 12px;
+  padding: 0.1em 0.8em;
+  margin: 0.09em 0;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar-tag.active {
+  background: var(--primary);
+  color: #fff;
+}
+.sidebar-tag:hover, .sidebar-tag:focus-visible {
+  background: var(--primary);
+  color: #fff;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.create-btn {
+  background: var(--accent);
+  border: none;
+  color: #333;
+  border-radius: 8px;
+  padding: 0.7em 1.2em;
+  font-size: 1em;
+  box-shadow: 0 1px 2px rgba(33,30,40,0.08);
+  font-weight: 600;
+  margin: 1em 0 0 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.create-btn:hover {
+  background: #ffec80;
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+/* Main Content */
+.main-pane {
+  flex: 1;
+  padding: 0;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 2vw;
+  background: var(--bg);
+  position: relative;
+}
+.note-list-container, .note-details-container {
+  padding: 36px 16px 16px 16px;
+  flex: 1 1 50%;
+  overflow-y: auto;
+  height: calc(85vh - 56px - 2em);
+}
+.note-list-container {
+  max-width: 330px;
+  border-right: 1px solid var(--border);
+}
+.note-details-container {
+  padding-left: 2vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Note List */
+.note-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.note-list-item {
+  cursor: pointer;
+  padding: 0.7em 1em 0.55em 1em;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: background 0.1s, box-shadow 0.1s, border-color 0.1s;
+  margin-bottom: 0.22em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #fff;
+}
+.note-list-item.active, .note-list-item:hover {
+  background: var(--grey-light);
+  border-color: var(--primary);
+}
+.note-title {
+  font-weight: 600;
+  font-size: 1.07em;
+  letter-spacing: 0.02em;
+}
+.note-tags {
+  display: flex;
+  gap: 0.3em;
+  flex-wrap: wrap;
+  margin: 0.18em 0 0.12em 0;
+}
+.note-tag {
+  display: inline-block;
+  padding: 0 0.8em;
+  font-size: 0.81em;
+  border-radius: 9px;
+  background: var(--accent);
+  margin: 0 0.09em;
+  font-weight: 500;
+}
+.note-short {
+  font-size: 0.92em;
+  color: var(--text-secondary);
+}
+
+.list-status {
+  padding: 2em 1em 2em 1em;
+  min-height: 4em;
+  color: var(--secondary);
+  text-align: center;
+}
+
+/* Note Details */
+.note-details {
+  max-width: 38vw;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.note-details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+}
+.note-content {
+  white-space: pre-wrap;
+  font-size: 1.03em;
+  color: var(--text);
+  background: #fafafc;
+  border-radius: 6px;
+  padding: 1em;
+  min-height: 6em;
+  box-shadow: 0 1px 4px -3px #b6bedb40;
+}
+
+.note-details-empty {
+  margin-top: 7em;
+  text-align: center;
+  color: #bbb;
+}
+
+.small-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0 4px 0 0;
+  border-radius: 6px;
+  padding: 5px 16px;
+  transition: background 0.12s, color 0.15s;
+}
+.small-btn:hover {
+  background: var(--grey-light);
+  color: var(--secondary);
+}
+.small-btn.danger {
+  color: var(--danger);
+}
+.small-btn.danger:hover {
+  background: #ffeaea;
+}
+
+/* Note Form */
+.note-form {
+  max-width: 360px;
+  margin: 3em auto 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 1.5em -1.2em #00000020;
+  padding: 2.1em 1.65em 1em 1.65em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4em;
+  border: 1px solid var(--border);
+}
+.note-form h2 {
+  margin-top: 0.3em;
+  margin-bottom: 0.6em;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: var(--primary);
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+.form-field label {
+  font-size: 0.97em;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.form-field input,
+.form-field textarea {
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  border-radius: 6px;
+  padding: 0.5em 0.9em;
+  font-size: 1em;
+  color: var(--text);
+  outline: none;
+  font-family: inherit;
+  transition: box-shadow 0.12s, border 0.18s;
+}
+.form-field input:focus, .form-field textarea:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+.form-buttons {
+  display: flex;
+  gap: 1em;
+  margin-top: 10px;
+}
+.form-buttons .primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+}
+.form-buttons .secondary {
+  background: #f3f3f3;
+  color: var(--secondary);
+  border: 1px solid var(--border);
+}
+.form-buttons button {
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.7em 1.5em;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(33,30,40,0.01);
+}
+
+.alert {
+  background: #ffeaea;
+  padding: 16px 20px;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  color: var(--danger);
+  font-weight: 500;
+  font-size: 1em;
+  border: 1px solid #ffd2d2;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  padding: 1em 0 1em 0;
+  text-align: center;
+  background: var(--grey-light);
+  font-size: 0.98em;
+  font-weight: 500;
+  color: var(--primary);
+  margin-top: 1em;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+  .note-list-container {
+    max-width: none;
+    border-right: none;
+    padding-left: 12px;
+  }
+  .main-pane {
+    flex-direction: column;
   }
 }
-
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+@media (max-width: 650px) {
+  .topbar {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0.7em 2vw;
+  }
+  .footer {
+    font-size: 0.85em;
+  }
+  .note-form, .note-details {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 95vw;
   }
 }

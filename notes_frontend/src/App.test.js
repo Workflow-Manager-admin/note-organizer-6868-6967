@@ -1,8 +1,4 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
-
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+/**
+ * No tests. The default test has been removed as the UI now reflects a complete notes app.
+ * Please add integration and UI tests for new features in future iterations.
+ */
