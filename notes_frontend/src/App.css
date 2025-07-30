@@ -1,18 +1,16 @@
-/* Theme color variables for light mode */
 :root {
-  --primary: #1976d2;
-  --secondary: #424242;
-  --accent: #ffd600;
-  --danger: #e53935;
-  --bg: #ffffff;
-  --grey-light: #f8f9fa;
-  --grey: #e9ecef;
-  --border: #e9ecef;
-  --text: #282c34;
-  --text-secondary: #666c7b;
+  --primary: #000;
+  --secondary: #000;
+  --accent: #fff;
+  --danger: #000;
+  --bg: #fff;
+  --grey-light: #fff;
+  --grey: #fff;
+  --border: #000;
+  --text: #000;
+  --text-secondary: #333;
 }
 
-/* App Layout */
 .notes-app {
   min-height: 100vh;
   background: var(--bg);
@@ -32,7 +30,7 @@
   color: #fff;
   font-size: 1.35rem;
   font-weight: 600;
-  box-shadow: 0 4px 16px -12px var(--secondary);
+  box-shadow: 0 4px 16px -12px var(--border);
   letter-spacing: 0.04em;
   z-index: 10;
   position: relative;
@@ -44,7 +42,7 @@
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.05em;
-  text-shadow: 1px 2px 8px rgba(20,50,100,0.08);
+  text-shadow: none;
 }
 
 .search-container {
@@ -54,13 +52,13 @@
 
 .search-input {
   margin-left: 2vw;
-  border: none;
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 0.6em 1em;
   font-size: 1em;
-  background: var(--grey-light);
-  color: var(--text);
-  box-shadow: 0 1px 2px rgba(33,30,40,0.02);
+  background: #fff;
+  color: #000;
+  box-shadow: none;
   width: 220px;
   max-width: 50vw;
   outline: none;
@@ -68,20 +66,20 @@
 }
 .search-input:focus {
   background: #fff;
-  box-shadow: 0 0 0 2px var(--primary, #1976d2);
+  box-shadow: 0 0 0 2px #000;
 }
 
 .main-body {
   flex: 1;
   display: flex;
-  min-height: 0; /* so children can overflow for scroll */
+  min-height: 0;
 }
 
 /* Sidebar */
 .sidebar {
   width: 210px;
   flex-shrink: 0;
-  background: var(--grey-light);
+  background: var(--bg);
   border-right: 1px solid var(--border);
   padding: 0.5em 1.2em 0.5em 1em;
   min-height: 0;
@@ -114,29 +112,30 @@
   transition: background 0.2s, color 0.2s;
 }
 .sidebar-tag.active {
-  background: var(--primary);
+  background: #000;
   color: #fff;
 }
 .sidebar-tag:hover, .sidebar-tag:focus-visible {
-  background: var(--primary);
+  background: #000;
   color: #fff;
 }
 
 .create-btn {
-  background: var(--accent);
-  border: none;
-  color: #333;
+  background: #fff;
+  border: 1px solid #000;
+  color: #000;
   border-radius: 8px;
   padding: 0.7em 1.2em;
   font-size: 1em;
-  box-shadow: 0 1px 2px rgba(33,30,40,0.08);
+  box-shadow: none;
   font-weight: 600;
   margin: 1em 0 0 0;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;;
 }
 .create-btn:hover {
-  background: #ffec80;
+  background: #000;
+  color: #fff;
 }
 
 /* Main Content */
@@ -174,7 +173,7 @@
   cursor: pointer;
   padding: 0.7em 1em 0.55em 1em;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid var(--border);
   transition: background 0.1s, box-shadow 0.1s, border-color 0.1s;
   margin-bottom: 0.22em;
   display: flex;
@@ -183,8 +182,14 @@
   background: #fff;
 }
 .note-list-item.active, .note-list-item:hover {
-  background: var(--grey-light);
-  border-color: var(--primary);
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+.note-list-item.active .note-tag, .note-list-item:hover .note-tag {
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid #000;
 }
 .note-title {
   font-weight: 600;
@@ -202,19 +207,23 @@
   padding: 0 0.8em;
   font-size: 0.81em;
   border-radius: 9px;
-  background: var(--accent);
+  background: #fff;
   margin: 0 0.09em;
   font-weight: 500;
+  color: #000;
+  border: 1px solid #000;
+  transition: background 0.2s, color 0.2s, border 0.15s;
 }
+
 .note-short {
   font-size: 0.92em;
-  color: var(--text-secondary);
+  color: #333;
 }
 
 .list-status {
   padding: 2em 1em 2em 1em;
   min-height: 4em;
-  color: var(--secondary);
+  color: #000;
   text-align: center;
 }
 
@@ -235,12 +244,13 @@
 .note-content {
   white-space: pre-wrap;
   font-size: 1.03em;
-  color: var(--text);
-  background: #fafafc;
+  color: #000;
+  background: #fff;
   border-radius: 6px;
   padding: 1em;
   min-height: 6em;
-  box-shadow: 0 1px 4px -3px #b6bedb40;
+  box-shadow: none;
+  border: 1px solid #000;
 }
 
 .note-details-empty {
@@ -251,8 +261,8 @@
 
 .small-btn {
   background: none;
-  border: none;
-  color: var(--primary);
+  border: 1px solid #000;
+  color: #000;
   cursor: pointer;
   font-size: 1em;
   font-weight: 500;
@@ -262,14 +272,17 @@
   transition: background 0.12s, color 0.15s;
 }
 .small-btn:hover {
-  background: var(--grey-light);
-  color: var(--secondary);
+  background: #000;
+  color: #fff;
 }
 .small-btn.danger {
-  color: var(--danger);
+  color: #000;
+  border-color: #000;
 }
 .small-btn.danger:hover {
-  background: #ffeaea;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
 }
 
 /* Note Form */
@@ -278,19 +291,19 @@
   margin: 3em auto 0 auto;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 1.5em -1.2em #00000020;
+  box-shadow: none;
   padding: 2.1em 1.65em 1em 1.65em;
   display: flex;
   flex-direction: column;
   gap: 1.4em;
-  border: 1px solid var(--border);
+  border: 1px solid #000;
 }
 .note-form h2 {
   margin-top: 0.3em;
   margin-bottom: 0.6em;
   font-size: 1.25em;
   font-weight: 700;
-  color: var(--primary);
+  color: #000;
 }
 .form-field {
   display: flex;
@@ -299,23 +312,23 @@
 }
 .form-field label {
   font-size: 0.97em;
-  color: var(--text-secondary);
+  color: #333;
   font-weight: 500;
 }
 .form-field input,
 .form-field textarea {
-  border: 1px solid var(--border);
-  background: #f9fafb;
+  border: 1px solid #000;
+  background: #fff;
   border-radius: 6px;
   padding: 0.5em 0.9em;
   font-size: 1em;
-  color: var(--text);
+  color: #000;
   outline: none;
   font-family: inherit;
   transition: box-shadow 0.12s, border 0.18s;
 }
 .form-field input:focus, .form-field textarea:focus {
-  border-color: var(--primary);
+  border-color: #000;
   background: #fff;
 }
 .form-buttons {
@@ -324,14 +337,14 @@
   margin-top: 10px;
 }
 .form-buttons .primary {
-  background: var(--primary);
+  background: #000;
   color: #fff;
   border: none;
 }
 .form-buttons .secondary {
-  background: #f3f3f3;
-  color: var(--secondary);
-  border: 1px solid var(--border);
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
 }
 .form-buttons button {
   font-size: 1em;
@@ -339,18 +352,19 @@
   padding: 0.7em 1.5em;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(33,30,40,0.01);
+  box-shadow: none;
+  margin-bottom: 0;
 }
 
 .alert {
-  background: #ffeaea;
+  background: #fff;
   padding: 16px 20px;
   margin-bottom: 1em;
   border-radius: 8px;
-  color: var(--danger);
+  color: #000;
   font-weight: 500;
   font-size: 1em;
-  border: 1px solid #ffd2d2;
+  border: 1px solid #000;
 }
 
 /* Footer */
@@ -358,11 +372,22 @@
   width: 100%;
   padding: 1em 0 1em 0;
   text-align: center;
-  background: var(--grey-light);
+  background: #fff;
   font-size: 0.98em;
   font-weight: 500;
-  color: var(--primary);
+  color: #000;
+  border-top: 1px solid #000;
   margin-top: 1em;
+}
+
+/* Remove scrollbars (for a cleaner style) */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 8px;
 }
 
 /* Responsiveness */

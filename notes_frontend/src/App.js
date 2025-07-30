@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-// Color palette based on work item
+/*
+  Pure black and white palette for monochrome theme
+*/
 const PALETTE = {
-  primary: "#1976d2",
-  secondary: "#424242",
-  accent: "#ffd600",
-  danger: "#e53935",
-  bg: "#ffffff",
-  border: "#e9ecef"
+  primary: "#000",
+  secondary: "#000",
+  accent: "#fff",
+  danger: "#000",
+  bg: "#fff",
+  border: "#000"
 };
 
 // API endpoint (customize as needed)
